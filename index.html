@@ -112,6 +112,7 @@ header p { color: var(--muted); max-width: 52ch; }
 .tag { justify-self: start; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .2rem .6rem; border-radius: 999px; }
 .tag.jabon { background: var(--salvia); color: var(--salvia-ink); }
 .tag.aceite { background: var(--lavanda); color: var(--lavanda-ink); }
+.tag.artesania { background: var(--arcilla); color: var(--tit-2); }
 .dots { display: flex; gap: .3rem; }
 .dots i { width: .85rem; height: .85rem; border-radius: 50%; border: 1px solid var(--line); display: block; }
 
@@ -267,9 +268,9 @@ footer .logo { width: 3.5rem; aspect-ratio: 4 / 3; }
 }
 
 /* Paleta «Terracota y lino» (26-oct): cabecera lino, títulos terracota, fichas teñidas por categoría */
-:root { --bg: #faf7f1; --hdr: #e8dfd0; --tit: #9a4a2a; --tit-2: #6e3a22; --raya: #dccfba; --on-tit: #fff; --tinte-jabon: #f1eadf; --tinte-aceite: #f5f1f9; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #241c17; --hdr: #352b23; --tit: #e3a07c; --tit-2: #f0d2bd; --raya: #4a3b30; --on-tit: #241c17; --tinte-jabon: #312922; --tinte-aceite: #2f2a35; } }
-:root[data-theme="dark"] { --bg: #241c17; --hdr: #352b23; --tit: #e3a07c; --tit-2: #f0d2bd; --raya: #4a3b30; --on-tit: #241c17; --tinte-jabon: #312922; --tinte-aceite: #2f2a35; }
+:root { --bg: #faf7f1; --hdr: #e8dfd0; --tit: #9a4a2a; --tit-2: #6e3a22; --raya: #dccfba; --on-tit: #fff; --tinte-jabon: #f1eadf; --tinte-aceite: #f5f1f9; --tinte-artesania: #f7ede6; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #241c17; --hdr: #352b23; --tit: #e3a07c; --tit-2: #f0d2bd; --raya: #4a3b30; --on-tit: #241c17; --tinte-jabon: #312922; --tinte-aceite: #2f2a35; --tinte-artesania: #33271f; } }
+:root[data-theme="dark"] { --bg: #241c17; --hdr: #352b23; --tit: #e3a07c; --tit-2: #f0d2bd; --raya: #4a3b30; --on-tit: #241c17; --tinte-jabon: #312922; --tinte-aceite: #2f2a35; --tinte-artesania: #33271f; }
 header { position: relative; padding-top: 1.75rem; padding-bottom: 1.75rem; background: var(--hdr); box-shadow: 0 0 0 100vmax var(--hdr); clip-path: inset(0 -100vmax); }
 .wrap { padding-top: 0 !important; }
 .tabs { margin-top: 0 !important; }
@@ -282,6 +283,7 @@ header .logo { background: var(--tit); }
 .price { color: var(--tit); }
 .card:has(.tag.jabon) .info { background: var(--tinte-jabon); }
 .card:has(.tag.aceite) .info { background: var(--tinte-aceite); }
+.card:has(.tag.artesania) .info { background: var(--tinte-artesania); }
 .filters button[aria-pressed="true"] { background: var(--tit); border-color: var(--tit); color: var(--on-tit); }
 .filtro-movil select { border-color: var(--raya); }
 /* Botón de modo claro/oscuro: solo icono, esquina de la cabecera */
@@ -325,9 +327,10 @@ header .logo { background: var(--tit); }
         <button id="f-todo" data-f="todo" aria-pressed="true">Todo <span class="n"></span></button>
         <button id="f-jabon" data-f="jabon" aria-pressed="false">Jabones artesanales <span class="n"></span></button>
         <button id="f-aceite" data-f="aceite" aria-pressed="false">Aceites esenciales <span class="n"></span></button>
+        <button id="f-artesania" data-f="artesania" aria-pressed="false">Artesanías <span class="n"></span></button>
       </div>
       <div class="filtro-movil"><label for="f-movil">Filtrar</label><select id="f-movil">
-        <option value="todo">Todo</option><option value="jabon">Jabones artesanales</option><option value="aceite">Aceites esenciales</option>
+        <option value="todo">Todo</option><option value="jabon">Jabones artesanales</option><option value="aceite">Aceites esenciales</option><option value="artesania">Artesanías</option>
       </select></div>
       <span class="count" id="count"></span>
     </div>
@@ -836,8 +839,8 @@ function pintarContacto(p) {
   document.getElementById('d-ask').hidden = !links.length;
 }
 
-const CAT = { jabon: 'Jabón artesanal', aceite: 'Aceite esencial' };
-const SECCION = { jabon: 'Jabones artesanales', aceite: 'Aceites esenciales' };
+const CAT = { jabon: 'Jabón artesanal', aceite: 'Aceite esencial', artesania: 'Artesanía' };
+const SECCION = { jabon: 'Jabones artesanales', aceite: 'Aceites esenciales', artesania: 'Artesanías' };
 
 const grid = document.getElementById('grid'), empty = document.getElementById('empty'), count = document.getElementById('count');
 const btns = document.querySelectorAll('.filters button'), sel = document.getElementById('f-movil');
@@ -846,7 +849,10 @@ const el = (t, cls, txt) => { const e = document.createElement(t); if (cls) e.cl
 btns.forEach(b => {
   const n = b.dataset.f === 'todo' ? PRODUCTOS.length : PRODUCTOS.filter(p => p.categoria === b.dataset.f).length;
   b.querySelector('.n').textContent = n;
-  sel.querySelector(`option[value="${b.dataset.f}"]`).textContent += ` (${n})`;
+  const op = sel.querySelector(`option[value="${b.dataset.f}"]`);
+  op.textContent += ` (${n})`;
+  // Una categoría sin productos todavía no se muestra en los filtros
+  if (!n) { b.hidden = true; op.remove(); }
   b.addEventListener('click', () => { btns.forEach(x => x.setAttribute('aria-pressed', x === b)); sel.value = b.dataset.f; render(b.dataset.f); });
 });
 // En el móvil los filtros son un desplegable; ambos se mantienen sincronizados
