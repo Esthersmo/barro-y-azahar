@@ -303,6 +303,35 @@ header .logo { background: var(--tit); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --foto-bg: #f3ece3; --foto-bg-uvas: #e9dfd2; } }
 :root[data-theme="dark"] { --foto-bg: #f3ece3; --foto-bg-uvas: #e9dfd2; }
 .card[data-id="uvas"] .img, .detail[data-id="uvas"] .media { background: var(--foto-bg-uvas); }
+
+/* ===== Paleta oficial (Esther, 26-oct) =====
+   Primario: terracota · Secundario: marrón oscuro · Fondo: crema · Superficie: beige · Texto: marrón muy oscuro
+   El terracota intenso queda reservado para acciones, estado activo e información importante (precios, «Nuevo»). */
+:root {
+  --primario: #b0613b; --primario-intenso: #9a4a2a; --secundario: #6e3a22;
+  --fondo: #faf6ee; --superficie: #f3ece1; --texto: #2b1f17;
+  --bg: var(--fondo); --surface: var(--superficie); --fg: var(--texto);
+  --accent: var(--primario-intenso); --tit: var(--primario-intenso); --tit-2: var(--secundario); --on-tit: #fff;
+  --tinte-jabon: var(--superficie);
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --primario: #d2916b; --primario-intenso: #eda67f; --secundario: #f0d2bd;
+  --fondo: #241c17; --superficie: #2e241e; --texto: #f3eae0; --on-tit: #241c17; --tinte-jabon: #312922; } }
+:root[data-theme="dark"] {
+  --primario: #d2916b; --primario-intenso: #eda67f; --secundario: #f0d2bd;
+  --fondo: #241c17; --superficie: #2e241e; --texto: #f3eae0; --on-tit: #241c17; --tinte-jabon: #312922; }
+/* Marca y titulares: primario y secundario */
+header .logo { background: var(--primario); }
+.titulo-cat, .lema, .grid h2.sec, #proceso h2, #regalos h2, .card h3, .detail h2 { color: var(--secundario); }
+.step .txt::before, .uso ol li::before { color: var(--primario); }
+/* Acciones, estado activo e información importante: terracota intenso */
+.price, .card .more, .share-btn, .props[open] summary.eyebrow, .props summary:hover { color: var(--primario-intenso); }
+.tabs button[aria-selected="true"] { color: var(--primario-intenso); border-bottom-color: var(--primario-intenso); }
+.filters button[aria-pressed="true"], .nuevo { background: var(--primario-intenso); border-color: var(--primario-intenso); color: var(--on-tit); }
+.share-btn { border-color: var(--primario-intenso); }
+.share-btn:hover { background: var(--primario-intenso); color: var(--on-tit); }
+.detail .pips i.on { background: var(--primario-intenso); }
+.tema { color: var(--primario); }
 </style>
 </head>
 <body>
