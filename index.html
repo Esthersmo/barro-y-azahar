@@ -401,6 +401,12 @@ header .intro { justify-items: start !important; text-align: left !important; pa
 header { grid-template-columns: auto auto !important; justify-content: space-between; }
 .lema-cat { font-weight: 600; font-size: clamp(1.15rem, 2vw, 1.45rem); line-height: 1.2; letter-spacing: .24em; text-transform: uppercase; padding-left: .24em; color: var(--secundario); }
 @media (max-width: 640px) { .lema-cat { font-size: 1.05rem; letter-spacing: .22em; padding-left: .22em; } }
+
+/* Enlace de tarjeta: «Ver producto →» sin subrayado; la flecha indica que se puede abrir */
+.card .more { text-decoration: none !important; display: inline-flex; align-items: center; gap: .3em; }
+.card .more::after { content: "→"; transition: transform .2s ease; }
+.card:hover .more::after, .card:focus-visible .more::after { transform: translateX(3px); }
+@media (prefers-reduced-motion: reduce) { .card .more::after { transition: none; } }
 </style>
 </head>
 <body>
@@ -999,7 +1005,7 @@ function card(p) {
   info.append(el('p', 'desc', p.descripcion));
   const foot = el('div', 'foot'); const dots = el('span', 'dots');
   p.variantes.filter(v => v.color).forEach(v => { const d = el('i'); d.style.background = v.color; dots.append(d); });
-  foot.append(dots, el('span', 'more', dots.childElementCount ? 'Ver colores' : 'Ver detalles'));
+  foot.append(dots, el('span', 'more', dots.childElementCount ? 'Ver colores' : 'Ver producto'));
   info.append(foot); c.append(img, info);
   c.addEventListener('click', () => open(p));
   return c;
