@@ -343,6 +343,14 @@ header .logo { background: var(--primario); }
   main#productos { gap: 1rem !important; }
   .bar { margin-top: -.5rem; }
 }
+
+/* Móvil: pestañas compactas (opción A, 26-oct) */
+@media (max-width: 640px) {
+  .tabs button { font-size: .9rem; padding: .4rem 0 .5rem; }
+  .lema { margin-bottom: -1.1rem; }
+  .wrap > main, .wrap > section { margin-top: -.5rem; }
+}
+@media (max-width: 340px) { .tabs button { font-size: .85rem; } }
 </style>
 </head>
 <body>
