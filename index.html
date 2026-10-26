@@ -396,6 +396,11 @@ header .intro { justify-items: start !important; text-align: left !important; pa
   header .intro { padding-left: 1.3rem; padding-block: .45rem; }
   .titulo-cat { font-size: .8rem !important; letter-spacing: .2em !important; }
 }
+
+/* «Catálogo» centrado bajo la cabecera (sustituye a la frase); la cabecera queda con logo e icono */
+header { grid-template-columns: auto auto !important; justify-content: space-between; }
+.lema-cat { font-weight: 600; font-size: clamp(1.15rem, 2vw, 1.45rem); line-height: 1.2; letter-spacing: .24em; text-transform: uppercase; padding-left: .24em; color: var(--secundario); }
+@media (max-width: 640px) { .lema-cat { font-size: 1.05rem; letter-spacing: .22em; padding-left: .22em; } }
 </style>
 </head>
 <body>
@@ -404,16 +409,13 @@ header .intro { justify-items: start !important; text-align: left !important; pa
 <div class="wrap">
   <header>
     <div class="logo" role="img" aria-label="Barro y Azahar"></div>
-    <div class="intro">
-      <span class="titulo-cat">Catálogo</span>
-    </div>
     <button type="button" class="tema" id="tema" aria-label="Cambiar a modo oscuro">
       <svg class="luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
       <svg class="sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
     </button>
   </header>
 
-  <h1 class="lema">Productos hechos a mano</h1>
+  <h1 class="lema lema-cat">Catálogo</h1>
 
   <nav class="tabs" id="tabs" role="tablist" aria-label="Secciones">
     <button type="button" role="tab" id="tab-productos" aria-controls="productos" aria-selected="true" data-tab="productos">Productos</button>
