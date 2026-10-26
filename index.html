@@ -332,6 +332,17 @@ header .logo { background: var(--primario); }
 .share-btn:hover { background: var(--primario-intenso); color: var(--on-tit); }
 .detail .pips i.on { background: var(--primario-intenso); }
 .tema { color: var(--primario); }
+
+/* Móvil: filtro compacto en una línea, «Filtrar · Todo (14) ▾», sin caja para que no parezca otra sección */
+@media (max-width: 640px) {
+  .filtro-movil { gap: .35rem; }
+  .filtro-movil label { font: 500 .9rem/1 var(--body); color: var(--muted); }
+  .filtro-movil label::after { content: " ·"; }
+  .filtro-movil select { min-width: 0; max-width: 100%; border: 0; border-radius: 6px; background-color: transparent; background-position: right .1rem center; background-size: 1rem; padding: .35rem 1.35rem .35rem .2rem; font: 600 .95rem/1.2 var(--body); color: var(--primario-intenso); text-align: left; text-align-last: left; }
+  .filtro-movil select:focus-visible { outline: 2px solid var(--primario-intenso); outline-offset: 2px; }
+  main#productos { gap: 1rem !important; }
+  .bar { margin-top: -.5rem; }
+}
 </style>
 </head>
 <body>
@@ -893,6 +904,16 @@ btns.forEach(b => {
 });
 // En el móvil los filtros son un desplegable; ambos se mantienen sincronizados
 sel.addEventListener('change', () => { btns.forEach(x => x.setAttribute('aria-pressed', x.dataset.f === sel.value)); render(sel.value); });
+// El desplegable compacto se ajusta al ancho de la opción elegida, con la flecha justo al lado
+function ajustarSelect() {
+  const m = el('span', null, sel.options[sel.selectedIndex].textContent), cs = getComputedStyle(sel);
+  m.style.cssText = 'position:absolute;visibility:hidden;white-space:pre;font:' + cs.font;
+  document.body.append(m); sel.style.width = (m.getBoundingClientRect().width + parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight) + 2) + 'px'; m.remove();
+}
+sel.addEventListener('change', ajustarSelect);
+addEventListener('resize', ajustarSelect);
+(document.fonts ? document.fonts.ready : Promise.resolve()).then(ajustarSelect);
+ajustarSelect();
 
 function render(f) {
   const list = PRODUCTOS.filter(p => f === 'todo' || p.categoria === f);
