@@ -101,9 +101,9 @@ header p { color: var(--muted); max-width: 52ch; }
 :root[data-theme="dark"] { --foto-bg: #e9dfd2; }
 .card .info { padding: 1rem 1.1rem 1.2rem; display: flex; flex-direction: column; align-items: flex-start; gap: .45rem; }
 .card h3 { font-size: 1.25rem; }
-.price { font-family: var(--display); font-weight: 600; color: var(--accent); font-variant-numeric: tabular-nums; }
-.card .price { font-size: 1.05rem; }
-.detail .price { font-size: 1.4rem; }
+.price { font-family: var(--body); font-weight: 700; letter-spacing: .01em; color: var(--accent); font-variant-numeric: tabular-nums; }
+.card .price { font-size: 1rem; }
+.detail .price { font-size: 1.25rem; }
 .card .desc { font-size: .92rem; color: var(--muted); }
 .card .foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .4rem .5rem; margin-top: auto; padding-top: .3rem; align-self: stretch; }
 .card .more { font-weight: 600; font-size: .88rem; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
@@ -178,7 +178,7 @@ dialog::backdrop { background: var(--scrim); }
 /* Accesos a las secciones */
 /* Pestañas: Productos · Cómo lo hacemos · Ideas para regalar */
 .tabs { display: flex; justify-content: center; gap: 3rem; border-bottom: 1px solid var(--line); margin-top: -1rem; scroll-margin-top: 1rem; }
-.tabs button { font: inherit; font-family: var(--display); font-size: 1.5rem; font-weight: 600; color: var(--muted); background: none; border: 0; padding: .6rem 0 .8rem; margin-bottom: -1px; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; }
+.tabs button { font: inherit; font-family: var(--body); font-size: 1.1rem; font-weight: 600; letter-spacing: .02em; color: var(--muted); background: none; border: 0; padding: .6rem 0 .8rem; margin-bottom: -1px; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; }
 .tabs button:hover { color: var(--fg); }
 .tabs .corto { display: none; }
 .tabs button[aria-selected="true"] { color: var(--fg); border-bottom-color: var(--accent); }
@@ -209,7 +209,7 @@ dialog::backdrop { background: var(--scrim); }
 .gifts .fila { display: grid; gap: 1.25rem; align-items: start; }
 .gifts .fila.f1 { grid-template-columns: minmax(0, 1.33fr) minmax(0, .75fr); }
 .gifts .fila.f2 { grid-template-columns: minmax(0, 1.78fr) minmax(0, .8fr); }
-.gift .price { font-size: 1.1rem; }
+.gift .price { font-size: 1rem; }
 .gift { margin: 0; display: grid; gap: .75rem; align-content: start; }
 .gift img { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 4px; }
 .gift h3 { font-size: 1.2rem; }
@@ -228,7 +228,7 @@ footer .logo { width: 3.5rem; aspect-ratio: 4 / 3; }
   .bar { justify-content: center; }
   .filters { display: none; }
   .filtro-movil { display: flex; align-items: center; justify-content: center; gap: .75rem; }
-  .filtro-movil label { font: 600 1.05rem/1 var(--display); color: var(--tit, var(--fg)); }
+  .filtro-movil label { font: 600 .95rem/1 var(--body); color: var(--muted); }
   .filtro-movil select { min-width: min(13rem, calc(100vw - 9rem)); }
   .count { display: none; }
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
@@ -252,7 +252,7 @@ footer .logo { width: 3.5rem; aspect-ratio: 4 / 3; }
   .tabs::-webkit-scrollbar { display: none; }
   /* Móvil: nombres cortos, grandes y repartidos a lo ancho */
   .tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; overflow: visible; }
-  .tabs button { font-size: 1.15rem; text-align: center; padding: .7rem 0 .8rem; }
+  .tabs button { font-size: 1rem; text-align: center; padding: .7rem 0 .8rem; }
   .tabs .largo { display: none; }
   .tabs .corto { display: inline; }
   .step { grid-template-columns: 1fr; gap: 1.75rem; }
@@ -263,7 +263,7 @@ footer .logo { width: 3.5rem; aspect-ratio: 4 / 3; }
   .gifts, .gifts .fila { grid-template-columns: 1fr !important; gap: 2rem; }
 }
 @media (max-width: 340px) {
-  .tabs button { font-size: 1rem; }
+  .tabs button { font-size: .92rem; }
 }
 
 /* Paleta «Terracota y lino» (26-oct): cabecera lino, títulos terracota, fichas teñidas por categoría */
