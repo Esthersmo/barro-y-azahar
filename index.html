@@ -351,6 +351,38 @@ header .logo { background: var(--primario); }
   .wrap > main, .wrap > section { margin-top: -.5rem; }
 }
 @media (max-width: 340px) { .tabs button { font-size: .85rem; } }
+
+/* ===== Refinado (26-oct): radio único, detalles más ligeros y escala fija de espacios =====
+   Escala vertical: --esp-xs dentro de un grupo · --esp-s título→contenido · --esp-m entre grupos · --esp-l entre secciones */
+:root { --radio: 14px; --esp-xs: 1rem; --esp-s: 1rem; --esp-m: 1.5rem; --esp-l: 3rem; --fila: 1.5rem; --raya-suave: #ebe2d4; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --raya-suave: #3a2f27; } }
+:root[data-theme="dark"] { --raya-suave: #3a2f27; }
+@media (max-width: 640px) { :root { --esp-xs: .75rem; --esp-s: .75rem; --esp-m: 1rem; --esp-l: 2rem; --fila: 1rem; } }
+/* Mismo radio en tarjetas, fotos, ventana de detalle, avisos y campos (las píldoras y círculos se quedan redondos) */
+.card, .empty, .tip, .step .pic > img, .gift img, .share input, .filtro-movil select { border-radius: var(--radio) !important; }
+@media (min-width: 641px) { dialog { border-radius: var(--radio); } }
+/* «Ver colores» / «Ver detalles»: subrayado fino y suave */
+.card .more { text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: color-mix(in srgb, var(--primario-intenso) 40%, transparent); }
+.card:hover .more { text-decoration-color: currentColor; }
+/* «Nuevo» algo más pequeño */
+.nuevo { font-size: .62rem; letter-spacing: .07em; padding: .2rem .5rem; }
+/* Círculos de color más discretos */
+.dots { gap: .25rem; }
+.dots i { width: .6rem; height: .6rem; border-color: color-mix(in srgb, var(--fg) 12%, transparent); }
+@media (max-width: 640px) { .dots i { width: .5rem; height: .5rem; } .card .dots { gap: .2rem; } }
+/* Línea de sección con menos contraste */
+.grid .sec::after { background: var(--raya-suave); }
+/* Espacios verticales */
+.wrap { gap: 0 !important; }
+.lema { margin: calc(var(--esp-m) + .5rem) auto var(--esp-xs) !important; }
+.tabs { margin-top: 0 !important; }
+.wrap > main, .wrap > section { margin-top: var(--esp-m) !important; }
+main#productos { gap: var(--esp-m) !important; }
+.bar { margin-top: 0 !important; }
+.grid { row-gap: var(--fila); }
+.grid .sec { margin: 0 0 calc(var(--esp-s) - var(--fila)) !important; }
+.grid .sec:not(:first-child) { margin-top: calc(var(--esp-l) - var(--fila)) !important; }
+footer { margin-top: var(--esp-l); }
 </style>
 </head>
 <body>
