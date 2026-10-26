@@ -203,7 +203,12 @@ dialog::backdrop { background: var(--scrim); }
 .step p { color: var(--muted); max-width: 40ch; }
 
 /* Columnas proporcionales a cada foto: todas a la misma altura y sin recortes */
-.gifts { display: grid; grid-template-columns: minmax(0, 1.33fr) minmax(0, 1.78fr) minmax(0, .75fr); gap: 1.25rem; }
+.gifts { display: grid; gap: 1.25rem; }
+/* Cada fila reparte el ancho según la proporción de sus fotos, así las dos imágenes quedan a la misma altura */
+.gifts .fila { display: grid; gap: 1.25rem; align-items: start; }
+.gifts .fila.f1 { grid-template-columns: minmax(0, 1.33fr) minmax(0, .75fr); }
+.gifts .fila.f2 { grid-template-columns: minmax(0, 1.78fr) minmax(0, .8fr); }
+.gift .price { font-size: 1.1rem; }
 .gift { margin: 0; display: grid; gap: .75rem; align-content: start; }
 .gift img { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 4px; }
 .gift h3 { font-size: 1.2rem; }
@@ -255,7 +260,7 @@ footer .logo { width: 3.5rem; aspect-ratio: 4 / 3; }
   .step .pic .zoom { left: .75rem; right: auto; bottom: -1.25rem; width: 32%; }
   .step:nth-child(even) .pic .zoom { left: auto; right: .75rem; }
   .step h3 { font-size: 1.4rem; }
-  .gifts { grid-template-columns: 1fr; gap: 2rem; }
+  .gifts, .gifts .fila { grid-template-columns: 1fr !important; gap: 2rem; }
 }
 @media (max-width: 340px) {
   .tabs button { font-size: 1rem; }
@@ -379,9 +384,14 @@ header .logo { background: var(--tit); }
       <p>Combinamos jabones, aceites y esponjas en presentaciones pensadas para regalar.</p>
     </div>
     <div class="gifts">
+     <div class="fila f1">
       <figure class="gift"><img src="fotos/regalo_set_bano.jpg" alt="Jabón de rosa, jabón de panal y esponja de lufa sobre una bandeja hecha con una botella verde" loading="lazy"><figcaption><h3>Set de baño</h3><p>Jabones y esponja de lufa sobre una bandeja hecha con una botella de vidrio reciclada.</p></figcaption></figure>
-      <figure class="gift"><img src="fotos/regalo_girasol.jpg" alt="Jabón con forma de girasol sobre bandeja de vidrio con una espiga de trigo" loading="lazy"><figcaption><h3>Centro de mesa con girasol</h3><p>Jabón de girasol sobre bandeja de vidrio reciclado, con una espiga de trigo. Decora y perfuma.</p></figcaption></figure>
       <figure class="gift"><img src="fotos/regalo_aceite_lavanda.jpg" alt="Dos frascos de aceite esencial de lavanda envueltos con lazo rosa" loading="lazy"><figcaption><h3>Aceite esencial de lavanda</h3><p>Frasco con cuentagotas envuelto con lazo, listo para regalar.</p></figcaption></figure>
+     </div>
+     <div class="fila f2">
+      <figure class="gift"><img src="fotos/regalo_girasol.jpg" alt="Jabón con forma de girasol sobre bandeja de vidrio con una espiga de trigo" loading="lazy"><figcaption><h3>Centro de mesa con girasol</h3><p>Jabón de girasol sobre bandeja de vidrio reciclado, con una espiga de trigo. Decora y perfuma.</p></figcaption></figure>
+      <figure class="gift"><img src="fotos/regalo_kit_sandia.jpg" alt="Jabón de sandía y esponja natural de lufa en bolsa transparente atada con cordel" loading="lazy"><figcaption><h3>Kit de sandía y esponja</h3><span class="price">5,00 €</span><p>Jabón de sandía y esponja natural de lufa, envueltos en bolsa con lazo de cordel.</p></figcaption></figure>
+     </div>
     </div>
   </section>
 
