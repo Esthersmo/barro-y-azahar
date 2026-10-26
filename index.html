@@ -917,13 +917,15 @@ dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
 
 render('todo');
 
-// Modo claro/oscuro: por defecto sigue al dispositivo; el botón lo fija y se recuerda en este navegador
+// Modo claro/oscuro: por defecto claro; el botón lo cambia y se recuerda en este navegador
 (function () {
   const raiz = document.documentElement, btn = document.getElementById('tema');
   const mq = matchMedia('(prefers-color-scheme: dark)');
   const esOscuro = () => raiz.dataset.theme ? raiz.dataset.theme === 'dark' : mq.matches;
   const pintar = () => { const o = esOscuro(); raiz.classList.toggle('oscuro', o); btn.setAttribute('aria-label', o ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'); };
-  try { const g = localStorage.getItem('tema'); if (g === 'dark' || g === 'light') raiz.dataset.theme = g; } catch (e) {}
+  // Se abre en modo claro salvo que esta persona ya eligiera oscuro con el botón
+  let g = null; try { g = localStorage.getItem('tema'); } catch (e) {}
+  raiz.dataset.theme = g === 'dark' ? 'dark' : 'light';
   btn.addEventListener('click', () => {
     const nuevo = esOscuro() ? 'light' : 'dark';
     raiz.dataset.theme = nuevo;
