@@ -286,6 +286,7 @@ header .logo { background: var(--tit); }
 .card:has(.tag.artesania) .info { background: var(--tinte-artesania); }
 .filters button[aria-pressed="true"] { background: var(--tit); border-color: var(--tit); color: var(--on-tit); }
 .filtro-movil select { border-color: var(--raya); }
+.prec strong { font-weight: 700; color: var(--fg); }
 /* Botón de modo claro/oscuro: solo icono, esquina de la cabecera */
 .tema { position: absolute; top: .9rem; right: 0; width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 1px solid var(--raya); background: var(--surface); color: var(--tit); display: grid; place-items: center; cursor: pointer; padding: 0; }
 .tema:hover { border-color: var(--tit); }
@@ -466,7 +467,7 @@ const PRODUCTOS = [
   {
     id: 'uvas',
     nuevo: true,
-    precauciones: ["No es comestible. Por su aspecto de fruta, guárdalo fuera del alcance de niños pequeños y mascotas para que no se lo lleven a la boca."],
+    precauciones: ["**No es comestible.** Por su aspecto de fruta, guárdalo **fuera del alcance de niños pequeños y mascotas** para que no se lo lleven a la boca."],
     modoUso: USO_GLICERINA,
     propiedades: PROP_GLICERINA,
     nombre: 'Uvas',
@@ -547,7 +548,7 @@ const PRODUCTOS = [
   },
   {
     id: 'menta-limon',
-    precauciones: ["No recomendado para bebés ni niños pequeños, por la menta.", "La menta da una sensación de frío intensa: evita la cara cerca de los ojos."],
+    precauciones: ["**No recomendado para bebés ni niños pequeños**, por la menta.", "La menta da una **sensación de frío intensa**: evita la cara cerca de los ojos."],
     modoUso: [
       ["Humedece", "Moja tu piel con agua fresca o templada para potenciar la sensación energizante."],
       ["Estimula", "Pasa la pastilla o la espuma generada por todo el cuerpo o rostro mediante un masaje enérgico."],
@@ -574,7 +575,7 @@ const PRODUCTOS = [
   },
   {
     id: 'sandia',
-    precauciones: ["No es comestible. Por su aspecto de fruta, guárdalo fuera del alcance de niños pequeños y mascotas para que no se lo lleven a la boca.", "Las semillas de chía exfolian: no frotes con fuerza ni lo uses sobre piel irritada o dañada."],
+    precauciones: ["**No es comestible.** Por su aspecto de fruta, guárdalo **fuera del alcance de niños pequeños y mascotas** para que no se lo lleven a la boca.", "Las semillas de chía exfolian: **no frotes con fuerza** ni lo uses sobre **piel irritada o dañada**."],
     modoUso: USO_GLICERINA,
     propiedades: PROP_GLICERINA,
     precio: '4,50 €',
@@ -592,7 +593,7 @@ const PRODUCTOS = [
   {
     id: 'patito',
     nuevo: true,
-    precauciones: ["Úsalo siempre con la supervisión de un adulto. No apto para menores de 3 años.", "Lleva un patito de juguete: no dejes que los niños se lo lleven a la boca."],
+    precauciones: ["Úsalo siempre con la **supervisión de un adulto**. **No apto para menores de 3 años.**", "Lleva un patito de juguete: **no dejes que los niños se lo lleven a la boca.**"],
     modoUso: USO_GLICERINA,
     propiedades: PROP_GLICERINA,
     precio: '4,00 €',
@@ -607,7 +608,7 @@ const PRODUCTOS = [
   },
   {
     id: 'argan-limon',
-    precauciones: ["Contiene limón: evita el contacto con los ojos y aclara bien."],
+    precauciones: ["**Contiene limón:** evita el contacto con los ojos y aclara bien."],
     modoUso: [
       ["Humedece", "Moja la zona a tratar con agua templada."],
       ["Aplica", "Masajea la espuma generada por el jabón sobre el rostro o cuerpo, enfocándote en las zonas mixtas o que necesiten un extra de luz."],
@@ -634,7 +635,7 @@ const PRODUCTOS = [
   },
   {
     id: 'canela',
-    precauciones: ["La canela puede irritar las pieles sensibles o reactivas. Si es la primera vez, pruébalo antes en una zona pequeña.", "No lo uses sobre piel dañada ni en niños pequeños."],
+    precauciones: ["La canela **puede irritar las pieles sensibles** o reactivas. Si es la primera vez, **pruébalo antes en una zona pequeña**.", "**No lo uses sobre piel dañada ni en niños pequeños.**"],
     modoUso: [
       ["Humedece", "Moja la piel con agua templada."],
       ["Activa la circulación", "Masajea suavemente con movimientos circulares; la textura y los componentes de la canela estimularán la piel. Evita pieles extremadamente reactivas o heridas."],
@@ -661,7 +662,7 @@ const PRODUCTOS = [
   },
   {
     id: 'aloe-vera',
-    precauciones: ["No lo apliques sobre heridas abiertas ni quemaduras."],
+    precauciones: ["**No lo apliques sobre heridas abiertas ni quemaduras.**"],
     modoUso: [
       ["Humedece", "Moja tu piel con agua templada."],
       ["Extiende", "Aplica la espuma suavemente sobre el rostro o el cuerpo, prestando especial atención a zonas irritadas o castigadas por el sol."],
@@ -715,7 +716,7 @@ const PRODUCTOS = [
   },
   {
     id: 'azufre',
-    precauciones: ["Puede resecar la piel: úsalo 2 o 3 veces por semana como máximo y no lo combines con otros tratamientos para el acné sin consultar.", "No recomendado para pieles secas o muy sensibles. Tiene un olor característico a azufre."],
+    precauciones: ["**Puede resecar la piel:** úsalo **2 o 3 veces por semana como máximo** y no lo combines con otros tratamientos para el acné sin consultar.", "**No recomendado para pieles secas o muy sensibles.** Tiene un olor característico a azufre."],
     modoUso: [
       ["Humedece", "Moja la piel con agua templada."],
       ["Aplica (control de grasa)", "Frota el jabón generando espuma y aplícala en las zonas con exceso de grasa, brillos o tendencia acneica (rostro, espalda o pecho). Evita el contorno de ojos."],
@@ -742,7 +743,7 @@ const PRODUCTOS = [
   },
   {
     id: 'curcuma',
-    precauciones: ["Puede dejar un tono amarillento en toallas claras, esponjas o juntas de la ducha. Aclara bien después de usarlo."],
+    precauciones: ["**Puede dejar un tono amarillento** en toallas claras, esponjas o juntas de la ducha. Aclara bien después de usarlo."],
     modoUso: [
       ["Humedece", "Moja el rostro o el cuerpo con agua templada."],
       ["Aplica", "Masajea la espuma con movimientos circulares para activar sus propiedades antioxidantes e iluminadoras. (Nota: al ser cúrcuma natural, asegúrate de enjuagar muy bien para evitar cualquier rastro de color en la piel o toallas claras)."],
@@ -770,8 +771,8 @@ const PRODUCTOS = [
   {
     id: 'miel',
     precauciones: [
-      "Si eres alérgico a los productos apícolas (miel, propóleo o polen), evita usarlo o haz antes una pequeña prueba en el antebrazo.",
-      "Las pieles muy grasas o con acné activo deben usarlo con moderación: al ser muy nutritivo puede resultar demasiado denso. En esos casos suelen ir mejor opciones como el azufre, la arcilla o el limón."
+      "Si eres **alérgico a los productos apícolas** (miel, propóleo o polen), evita usarlo o haz antes una pequeña prueba en el antebrazo.",
+      "Las **pieles muy grasas o con acné activo** deben usarlo **con moderación**: al ser muy nutritivo puede resultar demasiado denso. En esos casos suelen ir mejor opciones como el azufre, la arcilla o el limón."
     ],
     consejo: 'Al ser un jabón rico en miel, un ingrediente muy humectante, guárdalo en una jabonera con buen drenaje para que se mantenga firme y dure más tiempo.',
     modoUso: [
@@ -800,7 +801,7 @@ const PRODUCTOS = [
   },
   {
     id: 'aceites',
-    precauciones: ["No ingerir. Evita el contacto con los ojos y las mucosas.", "No usar durante el embarazo o la lactancia, ni en niños pequeños, sin consejo de un profesional. La mirra en especial se desaconseja en el embarazo.", "Si tienes la piel sensible, haz antes una prueba en una zona pequeña.", "Mantener fuera del alcance de los niños. Conservar bien cerrado, lejos de la luz y el calor."],
+    precauciones: ["**No ingerir.** Evita el **contacto con los ojos** y las mucosas.", "**No usar durante el embarazo o la lactancia, ni en niños pequeños**, sin consejo de un profesional. La **mirra** en especial se desaconseja en el embarazo.", "Si tienes la piel sensible, **haz antes una prueba** en una zona pequeña.", "**Mantener fuera del alcance de los niños.** Conservar bien cerrado, lejos de la luz y el calor."],
     nombre: 'Aceites esenciales',
     precio: '5,00 €',
     categoria: 'aceite',
@@ -814,9 +815,9 @@ const PRODUCTOS = [
 ];
 // Precauciones que se muestran en todos los jabones, después de las propias de cada uno.
 const PREC_JABON = [
-  'Uso externo. Evita el contacto con los ojos; si ocurre, aclara con abundante agua.',
-  'Si notas irritación, picor o enrojecimiento, deja de usarlo.',
-  'Si tienes la piel muy sensible o alergia a algún aceite esencial, pruébalo antes en una zona pequeña (por ejemplo, el antebrazo).'
+  '**Uso externo.** Evita el **contacto con los ojos**; si ocurre, aclara con abundante agua.',
+  'Si notas irritación, picor o enrojecimiento, **deja de usarlo**.',
+  'Si tienes la piel muy sensible o alergia a algún aceite esencial, **pruébalo antes en una zona pequeña** (por ejemplo, el antebrazo).'
 ];
 // Consejo de conservación que se muestra en todos los jabones.
 const CONSEJO_JABON = 'Al ser un jabón artesanal, es importante guardarlo en una jabonera con buen drenaje para que se seque completamente entre usos y dure mucho más tiempo.';
@@ -921,7 +922,12 @@ function open(p) {
   document.getElementById('d-props').hidden = !props.length;
   const prec = [...(p.precauciones || []), ...(p.categoria === 'jabon' ? PREC_JABON : [])];
   document.getElementById('d-prec').hidden = !prec.length;
-  document.getElementById('d-prlist').replaceChildren(...prec.map(t => { const li = el('li'); li.append(el('span', null, t)); return li; }));
+  // Las palabras clave van entre **asteriscos** en los textos y se muestran en negrita
+  document.getElementById('d-prlist').replaceChildren(...prec.map(t => {
+    const li = el('li'), sp = el('span');
+    t.split('**').forEach((trozo, i) => { if (trozo) sp.append(i % 2 ? el('strong', null, trozo) : document.createTextNode(trozo)); });
+    li.append(sp); return li;
+  }));
   const uso = p.modoUso || [];
   const consejo = p.consejo || (p.categoria === 'jabon' ? CONSEJO_JABON : '');
   document.getElementById('d-uso').hidden = !uso.length && !consejo;
