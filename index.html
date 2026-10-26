@@ -407,6 +407,13 @@ header { grid-template-columns: auto auto !important; justify-content: space-bet
 .card .more::after { content: "→"; transition: transform .2s ease; }
 .card:hover .more::after, .card:focus-visible .more::after { transform: translateX(3px); }
 @media (prefers-reduced-motion: reduce) { .card .more::after { transition: none; } }
+
+/* «Catálogo» dentro de la cabecera, centrado ópticamente en la página (compensa el espaciado final de las letras) */
+.cab-cat { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); margin: 0; padding-left: .24em; white-space: nowrap;
+  font-family: var(--display); font-weight: 600; font-size: clamp(1.15rem, 2vw, 1.45rem); line-height: 1; letter-spacing: .24em; text-transform: uppercase; color: var(--secundario); }
+.tabs { margin-top: var(--esp-m) !important; }
+@media (max-width: 640px) { .cab-cat { font-size: .98rem; letter-spacing: .2em; padding-left: .2em; } }
+@media (max-width: 360px) { .cab-cat { font-size: .85rem; letter-spacing: .16em; padding-left: .16em; } }
 </style>
 </head>
 <body>
@@ -415,13 +422,13 @@ header { grid-template-columns: auto auto !important; justify-content: space-bet
 <div class="wrap">
   <header>
     <div class="logo" role="img" aria-label="Barro y Azahar"></div>
+    <h1 class="cab-cat">Catálogo</h1>
     <button type="button" class="tema" id="tema" aria-label="Cambiar a modo oscuro">
       <svg class="luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
       <svg class="sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
     </button>
   </header>
 
-  <h1 class="lema lema-cat">Catálogo</h1>
 
   <nav class="tabs" id="tabs" role="tablist" aria-label="Secciones">
     <button type="button" role="tab" id="tab-productos" aria-controls="productos" aria-selected="true" data-tab="productos">Productos</button>
