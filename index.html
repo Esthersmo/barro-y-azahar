@@ -360,6 +360,7 @@ header .logo { background: var(--primario); }
 @media (max-width: 640px) { :root { --esp-xs: .75rem; --esp-s: .75rem; --esp-m: 1rem; --esp-l: 2rem; --fila: 1rem; } }
 /* Mismo radio en tarjetas, fotos, ventana de detalle, avisos y campos (las píldoras y círculos se quedan redondos) */
 .card, .empty, .tip, .step .pic > img, .gift img, .share input, .filtro-movil select { border-radius: var(--radio) !important; }
+.step .pic > img.zoom { border-radius: 50% !important; }
 @media (min-width: 641px) { dialog { border-radius: var(--radio); } }
 /* «Ver colores» / «Ver detalles»: subrayado fino y suave */
 .card .more { text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: color-mix(in srgb, var(--primario-intenso) 40%, transparent); }
